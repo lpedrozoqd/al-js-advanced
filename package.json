@@ -1,0 +1,17 @@
+{
+  "name": "al-js-advanced",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [
+    "clarape"
+  ],
+  "author": "",
+  "license": "ISC",
+   "scripts":{
+    "start":"set PORT=8888 && live-server"
+   },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

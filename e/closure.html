@@ -11,29 +11,23 @@
     <p><em>Abre la consola</em></p>
     <script>
         //Closures
-        
         //***Está globalmente:
-        /*  
         let color = 'green';
         function printColor() {
             console.log(color);
         }
         printColor();
-        */
         
         //***IIFE (inmediately invoked function expression)
-        /*
         (function () {
             let color = 'green';
-            function printColor() {
+            function printColorIIFE() {
                 console.log(color);
             }
-            printColor();            
+            printColorIIFE();            
         })();
-        */
 
         //***Función que retorna otra función
-        /*
         function makeColorPrinter(color) {
             let colorMessage = `The color is ${color}`;
             return function () {
@@ -42,7 +36,6 @@
         }
         let greenColorPrinter = makeColorPrinter('green');
         console.log(greenColorPrinter());
-        */
 
         //***Variables privadas
         function makeCounter(n) {

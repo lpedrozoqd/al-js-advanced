@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abre la consola</title>
+</head>
+<body>
+    <a href="/e/">Go back</a>
+    <p><em>Abre la consola</em></p>
+    <script>
+        console.log("*******1-un objeto común y corriente:");
+        const zelda ={
+            name:"Zelda",
+        };
+
+        zelda.saludar = function () {
+            console.log(`(1) Hola!, soy ${this.name}`);
+        };
+        zelda.saludar();
+        console.log("");
+        console.log("");
+
+        console.log("*******2-Otro objeto más");
+        const link ={
+            name:"Link",
+        };
+
+        link.saludar = function () {
+            console.log(`(2) Hola!, soy ${this.name}`);
+        };
+        link.saludar();
+        console.log("");
+        console.log("");
+
+        console.log("*******3-Seamos un poco más eficiente");
+        function Hero3(name) {
+            const hero = {
+                name: name
+            };
+            hero.saludar = function () {
+                console.log(`(3) Hola!, soy ${this.name}`)
+            };
+            return hero;
+        }
+
+        const zelda3 = Hero3("Zelda");
+        zelda3.saludar();
+        const link3 = Hero3("Link");
+        link3.saludar();
+        console.log("");
+        console.log("");
+
+        console.log("*******4-Aún podemos mejorar más y evitar tener que crear la misma fnc cada vez");
+        const hero4Methods = {
+            saludar: function () {
+                console.log(`(4) Hola!, soy ${this.name}`);
+            }
+        }
+        function Hero4(name) {
+            const hero4 = {
+                name: name
+            };
+            hero4.saludar = hero4Methods.saludar;
+            return hero4;
+        }
+        const zelda4 = Hero4("Zelda");
+        zelda4.saludar();
+        console.log("");
+        console.log("");
+
+        console.log("*******5-Object-create");
+        //Aquí se configura un poco de herencia prototipal
+        const hero5Methods = {
+            saludar: function () {
+                console.log(`(5) Hola!, soy ${this.name}`);
+            }
+        }
+        function Hero5(name) {
+            const hero5 = Object.create(hero5Methods);
+            hero5.name = name;
+            return hero5;
+        }
+        const zelda5 = Hero5("Zelda");
+        zelda5.saludar();
+
+        console.log("");
+        console.log("");
+
+        console.log("*******6-Los métodos de hero dentro de Hero");
+        function Hero6(name) {
+            const hero6 = Object.create(Hero6.prototype);
+            hero6.name = name;
+            return hero6;
+        }
+        Hero6.prototype.saludar = function () {
+                console.log(`(6) Hola!, soy ${this.name}`);
+        }
+
+        const zelda6 = Hero6("Zelda");
+        zelda6.saludar();
+        
+        console.log("");
+        console.log("");
+
+
+        console.log("*******7-new es un atajo (azúcar sintáctico)para llevar Hero.prototye al objeto");
+        function Hero7(name) {
+            //El atajo del "new" es que esta sentencia ocurre automáticamente:
+            //const hero7 = Object.create(Hero7.prototype);
+            
+            //hero7.name = name;
+            //return hero7;
+
+            //Adicionalmente, sólo se requiere asignar al this la propiedad argumento
+            this.name = name;
+            
+            //Y finalmente ya no es necesario 'return'. Implícitamente lo hace la fnc 
+        }
+        Hero7.prototype.saludar = function () {
+                console.log(`(7) Hola!, soy ${this.name}`);
+        }
+
+        const zelda7 = new Hero7("Zelda");
+        zelda7.saludar();
+        const link7 = new Hero7("Link");
+        link7.saludar();
+
+
+
+    </script>
+</body>
+</html>

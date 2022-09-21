@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abre la consola</title>
+</head>
+<body>
+    <a href="/e/">Go back</a>
+    <p><em>Abre la consola</em></p>
+    <script>
+        function Hero(name) {
+            this.name = name;
+        }
+        Hero.prototype.saludar = function () {
+            console.log(`Hola, soy ${this.name}`);
+        }
+        const zelda = new Hero("Zelda");
+
+        //1-Propiedades de la instancia
+        console.log("(1)Name:", zelda.name);
+
+        //2-Propiedades de la clase
+        console.log("(2)Saludar:", zelda.saludar);
+
+        //3-Propiedades heredadas ej: toString
+        console.log("(3)toString:", zelda.toString);
+
+        //4-hasOwnerProperty (de dónde sale toString o esto?) 
+        //(muestra que es propio y que es heredado)
+        console.log("(4)zelda.hasOwnProperty('name'):", zelda.hasOwnProperty('name'));
+        console.log("(4)zelda.hasOwnProperty('name_'):", zelda.hasOwnProperty('name_'));
+
+
+        //5-Inspeccionemos el prototipo de Zelda
+        const prototypeOfZelda = Object.getPrototypeOf(zelda);
+        console.log("(5)Object.getPrototypeOf(zelda): ", prototypeOfZelda);
+        //6-Inspeccionemos el prototipo de Hero
+        //Aquí da verdadero dado que es idéntico (ahí se compara la referencia -el mismo lugar de memoria-)
+        console.log("(6)prototypeOfZelda === Hero.prototype: ", prototypeOfZelda === Hero.prototype); ;
+        Hero.prototype.fight = function () {
+            console.log("FIGHT!");
+        };
+        zelda.fight();
+        console.log("(6)prototypeOfZelda === Hero.prototype: ", prototypeOfZelda === Hero.prototype); ;
+        console.log("zelda.hasOwnProperty('toString')", zelda.hasOwnProperty("toString"));
+        //7-Inspeccionemos el prototipo Object
+        //Hay que buscar en el prototype del prototype así:
+        const prototypeOfProtoypeOfZelda = Object.getPrototypeOf(Hero.prototype);
+        console.log('Object.getPrototypeOf(Hero.prototype): ', prototypeOfProtoypeOfZelda);
+        console.log("prototypeOfProtoypeOfZelda.hasOwnProperty('toString'): " ,prototypeOfProtoypeOfZelda.hasOwnProperty("toString"));
+
+        
+    </script>
+</body>
+</html>

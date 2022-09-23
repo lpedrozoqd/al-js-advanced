@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abre la consola</title>
+</head>
+<body>
+    <a href="/e/">Go back</a>
+    <p><em>Abre la consola</em></p>
+    <script>
+        function* simpleGenerator() {
+            console.log("Generator start");   
+            //Con 'yield' se detiene la ejecución y avanza con next() 
+            //instrucción por instrucción
+            yield 'start'; 
+            console.log("Fase 2");                
+            yield 'fase_2'; 
+            console.log("Fase 3");                
+            yield 'fase_3'; 
+            console.log("Generator end");    
+        }
+        const gen = simpleGenerator();
+    </script>
+</body>
+</html>
